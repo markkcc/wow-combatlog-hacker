@@ -98,20 +98,20 @@ fn main() {
             	    record.targetname = format!(r##""{0}""##, record.targetname);
             	    record.spellname  = format!(r##""{0}""##, record.spellname); 
 
-		    // only modify our target character name's healing output 
+		    // Only modify our target character name's healing output 
 		    if record.castername.contains(charactername) {
 		      currenthealing = record.heal as f32;
             	      currentrawhealing = record.healraw as f32;
             	      totalhealing += currenthealing as i32;
             	      totalrawhealing += currentrawhealing as i32;
 
-            	      // apply hack factor to healing
+            	      // Apply hack multiplier to healing
             	      currenthealing *= hackfactor;
             	      currentrawhealing *= hackfactor;
             	      totalhealing_hacked += currenthealing as i32;
             	      totalrawhealing_hacked += currentrawhealing as i32;
 
-            	      //update record[30] and record[31] with new values
+            	      // Update record[30] and record[31] with new values
             	      record.heal = currenthealing as u32;
             	      record.healraw = currentrawhealing as u32;
 		    }
@@ -138,8 +138,8 @@ fn main() {
 		    file.write(newline.as_bytes()).expect("Error writing to output file");
 		  } // end of for results in readcsv.deserialize();
             } else {
-                    // line not a heal even by the main character, keep values unmodified
-		    // convert each line to have the Windows new line format (CRLF)
+                    // Line not a heal event by the main character, keep values unmodified
+		    // Convert each line to have the Windows new line format (CRLF)
 		    line = format!("{0}\r\n", line);
                     file.write(line.as_bytes()).expect("Error writing to output file");
             }
