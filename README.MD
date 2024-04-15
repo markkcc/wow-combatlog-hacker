@@ -1,6 +1,6 @@
 # WoW Combat Log Hacker 
 
-Tested with COMBAT_LOG_VERSION: 9, BUILD_VERSION: 1.15.2 (WoW Classic: Season of Discovery)
+Tested with COMBAT_LOG_VERSION: 9, BUILD_VERSION: 1.15.2 (WoW Classic: Season of Discovery).
 This repo hosts Rust code that will look for heal events and increase healing by a multiplier.
 
 [Warcraft Logs](https://sod.warcraftlogs.com/) is an unofficial (non-Blizzard affiliated) third party website that collects Advanced Combat Logs from World of Warcraft to display statistics and rankings of players according to their in-game performance. 
@@ -56,4 +56,11 @@ Description of each field:
 | Resist/Absorb?    | 0					|
 | Critical	    | nil or 1				|
 
+## Usage
 
+Assumes you have your combat log available under `/Users/mfk/Downloads/WoWCombatLog.txt`, and outputs to `/Users/mfk/Downloads/WoWCombatLog.txt-hacked` a modified version of the logs, where only the specified character's healing output is increased by the multiplier. 
+
+Run with (on MacOS):
+```
+rm ~/Downloads/WoWCombatLog-hacked.txt && touch ~/Downloads/WoWCombatLog-hacked.txt && cargo run Characternamehere-LivingFlame
+```
